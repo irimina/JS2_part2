@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Color Change</title>
+    <style></style>
+    <script>
+      function initialize() {
+        redValueOut = document.getElementById("redval");
+        greenValueOut = document.getElementById("greenval");
+        blueValueOut = document.getElementById("blueval");
+
+        redValue = 255;
+        greenValue = 255;
+        blueValue = 255;
+
+        display();
+      }
+
+      function modifyRed(mod) {
+        redValue += mod;
+
+        if (redValue < 0) redValue = 0;
+
+        if (redValue > 255) redValue = 255;
+
+        display();
+      }
+
+      function modifyGreen(mod) {
+        greenValue += mod;
+
+        if (greenValue < 0) greenValue = 0;
+
+        if (greenValue > 255) greenValue = 255;
+
+        display();
+      }
+
+      function modifyBlue(mod) {
+        blueValue += mod;
+
+        if (blueValue < 0) blueValue = 0;
+
+        if (blueValue > 255) blueValue = 255;
+
+        display();
+      }
+
+      function display() {
+        redValueOut.innerHTML = redValue;
+        greenValueOut.innerHTML = greenValue;
+        blueValueOut.innerHTML = blueValue;
+
+        //document.body.style.backgroundColor = "rgb(" + redValue + ", " + greenValue + ", " + blueValue + ")";
+        document.body.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+      }
+    </script>
+  </head>
+
+  <body onload="initialize();">
+    <h1>Change the background color by clicking the buttons.</h1>
+    <hr />
+    <h2>
+      Red (<span id="redval"></span>):
+      <button onclick="modifyRed(1)">+1</button>
+      <button onclick="modifyRed(-1)">-1</button>
+      <button onclick="modifyRed(5)">+5</button>
+      <button onclick="modifyRed(-5)">-5</button>
+      <button onclick="modifyRed(10)">+10</button>
+      <button onclick="modifyRed(-10)">-10</button>
+    </h2>
+    <h2>
+      Green (<span id="greenval"></span>):
+      <button onclick="modifyGreen(1)">+1</button>
+      <button onclick="modifyGreen(-1)">-1</button>
+      <button onclick="modifyGreen(5)">+5</button>
+      <button onclick="modifyGreen(-5)">-5</button>
+      <button onclick="modifyGreen(10)">+10</button>
+      <button onclick="modifyGreen(-10)">-10</button>
+    </h2>
+    <h2>
+      Blue (<span id="blueval"></span>):
+      <button onclick="modifyBlue(1)">+1</button>
+      <button onclick="modifyBlue(-1)">-1</button>
+      <button onclick="modifyBlue(5)">+5</button>
+      <button onclick="modifyBlue(-5)">-5</button>
+      <button onclick="modifyBlue(10)">+10</button>
+      <button onclick="modifyBlue(-10)">-10</button>
+    </h2>
+  </body>
+</html>
